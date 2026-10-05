@@ -17,7 +17,7 @@ templates = Jinja2Templates(directory=str(settings.templates_dir))
 
 @router.get("/", response_class=HTMLResponse)
 def home(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request, "app_name": settings.app_name})
+    return templates.TemplateResponse(request, "index.html", {"app_name": settings.app_name})
 
 
 @router.post("/generate", response_class=HTMLResponse)
@@ -39,8 +39,8 @@ def generate_form(
         )
         comic = generate_comic(payload)
     except Exception as exc:
-        return templates.TemplateResponse("index.html", {
-            "request": request,
+        return templates.TemplateResponse(request, "index.html", {
+            
             "app_name": settings.app_name,
             "error": str(exc),
             "form": {
@@ -80,7 +80,7 @@ def download_pdf(filename: str):
 
 @router.get("/export-success", response_class=HTMLResponse)
 def export_success(request: Request, filename: str | None = None):
-    return templates.TemplateResponse("index.html", {"request": request, "app_name": settings.app_name})
+    return templates.TemplateResponse(request, "index.html", {"app_name": settings.app_name})
 
 
 @router.get("/health")
