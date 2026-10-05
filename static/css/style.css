@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --ink: #171717;
+  --paper: #fffaf0;
+  --cream: #f4ead7;
+  --yellow: #ffd84d;
+  --red: #ef5b4d;
+  --muted: #6c665d;
+  --line: #252525;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: radial-gradient(circle at top right,#ffe89a,transparent 30%), var(--paper); color: var(--ink); font-family: Inter,system-ui,sans-serif; }
+.site-header { max-width: 1180px; margin:auto; padding:28px 24px; display:flex; align-items:center; justify-content:space-between; }
+h1 { font-family:Bangers,cursive; letter-spacing:1px; font-size:48px; line-height:.9; margin:4px 0; }
+h1 span { color:var(--red); }
+.eyebrow,.badge { font-size:11px; font-weight:800; letter-spacing:2px; }
+.badge { display:inline-block; background:var(--yellow); border:2px solid var(--ink); padding:7px 10px; box-shadow:3px 3px 0 var(--ink); }
+.header-link { color:var(--ink); font-weight:700; text-decoration:none; }
+.hero,.comic-page { max-width:1080px; margin:35px auto 90px; padding:0 24px; }
+.intro { max-width:760px; margin-bottom:35px; }
+.intro h2,.comic-heading h2 { font-family:Bangers,cursive; font-size:62px; margin:18px 0 10px; line-height:.95; }
+.intro p,.comic-heading p { font-size:18px; color:var(--muted); line-height:1.65; }
+.creator-card { background:#fff; border:3px solid var(--line); box-shadow:10px 10px 0 var(--line); padding:30px; max-width:820px; }
+label { display:block; font-weight:700; margin-bottom:20px; }
+input,textarea,select { display:block; width:100%; margin-top:8px; border:2px solid var(--line); background:#fffdf7; padding:14px; font:inherit; color:inherit; }
+textarea { min-height:140px; resize:vertical; }
+.grid { display:grid; gap:18px; }
+.grid.two { grid-template-columns:1fr 1fr; }
+button,.button { display:inline-block; border:3px solid var(--line); background:var(--yellow); color:var(--ink); padding:14px 22px; font-weight:800; text-decoration:none; cursor:pointer; box-shadow:5px 5px 0 var(--line); }
+button:hover,.button:hover { transform:translate(2px,2px); box-shadow:3px 3px 0 var(--line); }
+.loading { margin:20px 0 0; color:var(--muted); }
+.error { background:#ffe0dc; border:2px solid var(--red); padding:14px; margin:18px 0; max-width:820px; }
+.comic-heading { margin-bottom:35px; }
+.panels { display:grid; gap:28px; }
+.panel-card { position:relative; display:grid; grid-template-columns:minmax(300px,1.25fr) 1fr; background:#fff; border:3px solid var(--line); box-shadow:8px 8px 0 var(--line); overflow:hidden; }
+.panel-number { position:absolute; z-index:2; top:12px; left:12px; background:var(--yellow); border:2px solid var(--line); padding:6px 9px; font-weight:900; }
+.panel-image-wrap { min-height:340px; background:#eee; }
+.panel-image-wrap img { width:100%; height:100%; min-height:340px; object-fit:cover; display:block; }
+.panel-copy { padding:28px; }
+.panel-copy h3 { font-family:Bangers,cursive; font-size:34px; margin:0 0 10px; }
+.scene { color:var(--muted); font-style:italic; line-height:1.5; }
+.text-block { margin-top:18px; line-height:1.6; }
+.text-block p { margin:5px 0; }
+.dialogue { margin-top:16px; padding:12px 16px; background:var(--cream); border-left:5px solid var(--red); font-weight:600; }
+.dialogue p { margin:4px 0; }
+.export-card { margin-top:45px; padding:30px; background:var(--yellow); border:3px solid var(--line); box-shadow:8px 8px 0 var(--line); }
+.export-card h3 { font-family:Bangers,cursive; font-size:38px; margin:0 0 8px; }
+.success { min-height:100vh; display:grid; place-items:center; align-content:center; text-align:center; padding:30px; }
+.success-mark { width:80px; height:80px; display:grid; place-items:center; border:4px solid var(--line); border-radius:50%; background:var(--yellow); font-size:42px; font-weight:900; margin-bottom:20px; }
+.success h1 { max-width:700px; font-size:70px; margin:20px 0; }
+.success p { color:var(--muted); margin-bottom:30px; }
+@media (max-width:760px) {
+  .grid.two,.panel-card { grid-template-columns:1fr; }
+  .intro h2,.comic-heading h2 { font-size:48px; }
+  .panel-image-wrap,.panel-image-wrap img { min-height:240px; }
+  .site-header { padding-top:18px; }
+}

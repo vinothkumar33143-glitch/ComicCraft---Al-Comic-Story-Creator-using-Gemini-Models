@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ comic.title }} — {{ app_name }}</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div><span class="eyebrow">YOUR NEW COMIC</span><h1>Comic<span>Craft</span></h1></div>
+  <a href="/" class="header-link">Create another</a>
+</header>
+
+<main class="comic-page">
+  <section class="comic-heading">
+    <span class="badge">FIVE-PANEL STORY</span>
+    <h2>{{ comic.title }}</h2>
+    <p>Review the panels below, then export the finished story as a PDF.</p>
+  </section>
+
+  <section class="panels">
+    {% for panel in comic.panels %}
+    <article class="panel-card">
+      <div class="panel-number">0{{ panel.panel_number }}</div>
+      <div class="panel-image-wrap">
+        <img src="{{ panel.image_url }}" alt="{{ panel.title }}">
+      </div>
+      <div class="panel-copy">
+        <h3>{{ panel.title }}</h3>
+        <p class="scene">{{ panel.scene_description }}</p>
+        <div class="text-block"><strong>Caption</strong><p>{{ panel.caption }}</p></div>
+        <div class="text-block"><strong>Narration</strong><p>{{ panel.narration }}</p></div>
+        {% if panel.dialogue %}
+        <div class="dialogue">
+          {% for line in panel.dialogue %}<p>“{{ line }}”</p>{% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+
+  {% if comic.pdf_url %}
+  <section class="export-card">
+    <h3>Your comic is ready.</h3>
+    <p>Download the complete five-panel story as a PDF.</p>
+    <a class="button" href="{{ comic.pdf_url }}" download>Download Your Comic as PDF →</a>
+  </section>
+  {% endif %}
+</main>
+</body>
+</html>

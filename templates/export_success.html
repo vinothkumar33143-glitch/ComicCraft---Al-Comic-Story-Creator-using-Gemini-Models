@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Export Complete — {{ app_name }}</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<main class="success">
+  <div class="success-mark">✓</div>
+  <span class="badge">EXPORT COMPLETE</span>
+  <h1>Your comic is ready to share.</h1>
+  <p>The PDF was generated successfully{% if filename %}: <strong>{{ filename }}</strong>{% endif %}.</p>
+  <a class="button" href="/">Go Create Another Comic →</a>
+</main>
+</body>
+</html>

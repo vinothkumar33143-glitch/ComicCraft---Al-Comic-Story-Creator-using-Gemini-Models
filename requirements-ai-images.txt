@@ -1,0 +1,8 @@
+# Optional: install only if you want local Stable Diffusion image generation.
+# Requires substantial disk space and RAM/VRAM. Placeholder images work without these packages.
+diffusers>=0.30,<0.40
+transformers>=4.55,<4.58
+huggingface-hub>=0.34,<1.0
+accelerate>=1.10,<2
+safetensors>=0.6,<1
+torch>=2.6,<3

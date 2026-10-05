@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ app_name }} — AI Comic Creator</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div>
+    <span class="eyebrow">AI STORY STUDIO</span>
+    <h1>Comic<span>Craft</span></h1>
+  </div>
+  <a href="/docs" class="header-link">API Docs</a>
+</header>
+
+<main class="hero">
+  <section class="intro">
+    <span class="badge">GEMINI × DIFFUSION</span>
+    <h2>Turn one idea into a comic.</h2>
+    <p>Describe your adventure, choose the mood and visual style, and ComicCraft builds a five-panel story with illustrations and a downloadable PDF.</p>
+  </section>
+
+  {% if error %}
+  <div class="error">{{ error }}</div>
+  {% endif %}
+
+  <form class="creator-card" action="/generate" method="post" onsubmit="showLoading()">
+    <label>
+      Story prompt
+      <textarea name="story_prompt" required maxlength="2000" placeholder="A brave fox exploring an enchanted forest...">{{ form.story_prompt if form else '' }}</textarea>
+    </label>
+
+    <div class="grid two">
+      <label>
+        Main character
+        <input name="character_name" required maxlength="80" value="{{ form.character_name if form else '' }}" placeholder="Fenn">
+      </label>
+      <label>
+        Setting
+        <select name="setting">
+          {% for value in ["school","forest","space","city"] %}
+          <option value="{{ value }}" {% if form and form.setting == value %}selected{% endif %}>{{ value|title }}</option>
+          {% endfor %}
+        </select>
+      </label>
+    </div>
+
+    <div class="grid two">
+      <label>
+        Tone
+        <select name="tone">
+          {% for value in ["light-hearted","dramatic","poetic","funny"] %}
+          <option value="{{ value }}" {% if form and form.tone == value %}selected{% endif %}>{{ value|title }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>
+        Art style
+        <select name="art_style">
+          {% for value in ["anime","pixel art","comic book","realistic"] %}
+          <option value="{{ value }}" {% if form and form.art_style == value %}selected{% endif %}>{{ value|title }}</option>
+          {% endfor %}
+        </select>
+      </label>
+    </div>
+
+    <button id="generateButton" type="submit">Create My Comic <span>→</span></button>
+    <p id="loading" class="loading" hidden>Creating your panels… this can take a while when using local image generation.</p>
+  </form>
+</main>
+<script src="/static/js/app.js"></script>
+</body>
+</html>
